@@ -14,7 +14,7 @@ Provides: cobbler
 
 BuildRoot:	%(mktemp -ud %{_tmppath}/%{name}-%{version}-%{release}-XXXXXX)
 
-Requires: cobbler cobbler-web cman libvirt
+Requires: cobbler cobbler-web cman libvirt koan
 BuildArch: noarch
 
 %description

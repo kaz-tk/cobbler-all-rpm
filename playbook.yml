@@ -25,7 +25,7 @@
   gather_facts: no
   remote_user: rpmbuilder
   vars:
-    Versions: [ "1.0.0" ]
+    Versions: [ "1.0.1" ]
   tasks:
     - shell: "/bin/echo  '%_topdir %(echo $HOME)/rpmbuild' > ~/.rpmmacros"
     - shell: "/bin/echo  '%debug_package %{nil}' >> ~/.rpmmacros"
