@@ -13,7 +13,7 @@ Packager: Kazushige TAKEUCHI
 
 BuildRoot:	%(mktemp -ud %{_tmppath}/%{name}-%{version}-%{release}-XXXXXX)
 
-Requires: cobbler cobbler-web cman libvirt koan
+Requires: cobbler, cobbler-web, cman, libvirt, koan, tftp, dnsmasq, syslinux
 BuildArch: noarch
 
 %description
@@ -25,8 +25,6 @@ BuildArch: noarch
 %clean
 %files
 %doc
-
-
 
 %changelog
 * Sun Dec 28 2015 Kazushige TAKEUCHI <kazushige.takeuchi@gmail.com>

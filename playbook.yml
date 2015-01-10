@@ -25,7 +25,7 @@
   gather_facts: no
   remote_user: rpmbuilder
   vars:
-    Versions: [ "1.0.2" ]
+    Versions: [ "1.0.3" ]
   tasks:
     - shell: "/bin/echo  '%_topdir %(echo $HOME)/rpmbuild' > ~/.rpmmacros"
     - shell: "/bin/echo  '%debug_package %{nil}' >> ~/.rpmmacros"
@@ -51,7 +51,10 @@
   sudo: True
   remote_user: vagrant
   vars:
-    version: "1.0.2"
+    version: "1.0.3"
+    services:
+      - "httpd"
+      - "cobblerd"
   tasks:
   - name: transfer rpm file.
     copy: dest=/home/{{ansible_ssh_user}}/cobbler-all-{{version}}-0.noarch.rpm
@@ -60,6 +63,8 @@
     yum:  name=/home/{{ansible_ssh_user}}/cobbler-all-{{version}}-0.noarch.rpm
           state=present
   - shell: chkconfig {{item}} on
-    with_items:
-      - "httpd"
-      - "cobblerd"
+    with_items: services
+  - service: name={{item}}
+             state=restarted
+    with_items: services
+             
